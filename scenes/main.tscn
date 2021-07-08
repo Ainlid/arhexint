@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://nodes/cell_grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://nodes/data_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://nodes/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://nodes/reset_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/logo.tscn" type="PackedScene" id=5]
 
 [node name="main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.25098, 0.25098, 0.25098, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,6 +44,31 @@ margin_left = 33.0
 margin_top = 622.0
 margin_right = 338.0
 margin_bottom = 686.0
+
+[node name="logo" parent="." instance=ExtResource( 5 )]
+margin_left = 840.0
+margin_top = 36.0
+margin_right = 1075.0
+margin_bottom = 76.0
+
+[node name="info" type="Label" parent="."]
+margin_left = 682.0
+margin_top = 91.0
+margin_right = 1212.0
+margin_bottom = 258.0
+text = "arhexint is a tool for iterpreting hexadecimal data as music.
+It supports any formats, but text or code may give better results due to their
+repetitive structure. Make sure your samples are 44.1 kHz 16-bit PCM for proper
+playback.
+Hint: I prefer using it as a drum machine, but pitch-shifting is an option.
+For example, values 2, 4, 5, 7, 9 and 11 are major scale.
+
+arhexint is open source, feel free to do whatever you want with it. I hope you enjoy
+this tool!
+- Ainlid"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="cleared" from="data_menu" to="player" method="_data_cleared"]
 [connection signal="loaded" from="data_menu" to="player" method="_receive_data"]

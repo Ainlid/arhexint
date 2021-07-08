@@ -1,0 +1,20 @@
+[gd_scene format=2]
+
+[node name="logo" type="Panel"]
+margin_right = 235.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 225.0
+margin_bottom = 37.0
+text = "arhexint
+arbitrary hexadecimal interpreter"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

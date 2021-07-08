@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/letter_e.wav-3b1628c9cc7324c6c03de09116ce9b60.sample"
+path="res://.import/kalimba_c4.wav-c1e8e132593823d55accc4c17b330203.sample"
 
 [deps]
 
-source_file="res://samples/other/letter_e.wav"
-dest_files=[ "res://.import/letter_e.wav-3b1628c9cc7324c6c03de09116ce9b60.sample" ]
+source_file="res://samples/other/kalimba_c4.wav"
+dest_files=[ "res://.import/kalimba_c4.wav-c1e8e132593823d55accc4c17b330203.sample" ]
 
 [params]
 

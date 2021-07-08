@@ -53,8 +53,9 @@ func _save_pressed():
 	save_dialog.popup_centered()
 
 func _confirm_save(save_path):
-	recording.save_to_wav(save_path)
-	save_popup.popup_centered()
+	if recording:
+		recording.save_to_wav(save_path)
+		save_popup.popup_centered()
 
 func _play_pressed():
 	if is_playing:
