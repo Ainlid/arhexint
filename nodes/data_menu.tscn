@@ -3,10 +3,8 @@
 [ext_resource path="res://scripts/data_menu.gd" type="Script" id=1]
 
 [node name="data_menu" type="Control"]
-margin_left = 36.0
-margin_top = 362.0
-margin_right = 341.0
-margin_bottom = 467.0
+margin_right = 305.0
+margin_bottom = 146.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,7 +51,6 @@ __meta__ = {
 }
 
 [node name="file_dialog" type="FileDialog" parent="."]
-visible = true
 margin_left = 320.0
 margin_top = -306.0
 margin_right = 706.0
@@ -61,6 +58,7 @@ margin_bottom = 146.0
 window_title = "Open a File"
 mode = 0
 access = 2
+show_hidden_files = true
 current_dir = "/Daniil/art/arhexint"
 current_path = "/Daniil/art/arhexint/"
 __meta__ = {

@@ -1,0 +1,143 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+
+[sub_resource type="AudioStreamSample" id=1]
+
+[node name="player" type="Control"]
+margin_right = 306.0
+margin_bottom = 306.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Panel" parent="."]
+margin_top = 2.0
+margin_right = 304.0
+margin_bottom = 306.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rate_box" type="SpinBox" parent="."]
+margin_left = 220.0
+margin_top = 16.0
+margin_right = 294.0
+margin_bottom = 40.0
+min_value = 1.0
+max_value = 16.0
+value = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rate_label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 208.0
+margin_bottom = 40.0
+text = "Playback rate ( value/second)"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="volume_box" type="SpinBox" parent="."]
+margin_left = 220.0
+margin_top = 53.0
+margin_right = 294.0
+margin_bottom = 77.0
+min_value = -6.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="volume_label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 53.0
+margin_right = 202.0
+margin_bottom = 77.0
+text = "Volume (dB)"
+valign = 1
+
+[node name="play_button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 90.0
+margin_right = 295.0
+margin_bottom = 118.0
+disabled = true
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="record_button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 133.0
+margin_right = 295.0
+margin_bottom = 161.0
+text = "Record"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save_button" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 176.0
+margin_right = 295.0
+margin_bottom = 204.0
+text = "Save recording"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save_dialog" type="FileDialog" parent="."]
+margin_left = 306.0
+margin_top = -122.0
+margin_right = 664.0
+margin_bottom = 144.0
+access = 2
+filters = PoolStringArray( "*.wav" )
+show_hidden_files = true
+current_dir = "/Daniil/art/arhexint"
+current_path = "/Daniil/art/arhexint/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save_popup" type="AcceptDialog" parent="."]
+margin_left = 305.0
+margin_top = 20.0
+margin_right = 571.0
+margin_bottom = 90.0
+window_title = ""
+dialog_text = "File saved!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 220.0
+margin_right = 294.0
+margin_bottom = 284.0
+text = "0/0
+Current value: -"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="recorder" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
+autoplay = true
+
+[node name="rate_timer" type="Timer" parent="."]
+
+[connection signal="value_changed" from="rate_box" to="." method="_rate_changed"]
+[connection signal="pressed" from="play_button" to="." method="_play_pressed"]
+[connection signal="pressed" from="record_button" to="." method="_record_pressed"]
+[connection signal="pressed" from="save_button" to="." method="_save_pressed"]
+[connection signal="file_selected" from="save_dialog" to="." method="_confirm_save"]
+[connection signal="timeout" from="rate_timer" to="." method="_rate_timeout"]

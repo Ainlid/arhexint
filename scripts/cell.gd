@@ -6,6 +6,7 @@ var audio_time = 1.0
 
 onready var file_dialog = $settings_menu/file_dialog
 onready var sample_status = $settings_menu/sample_scroll/sample_status
+var empty_col = Color(0.2, 0.2, 0.2, 1.0)
 
 onready var flash = $flash
 onready var flash_timer = $flash_timer
@@ -17,6 +18,7 @@ func _ready():
 	audio_timer.wait_time = audio_time
 	flash.hide()
 	flash_timer.wait_time = flash_time
+	modulate = empty_col
 
 func _show_settings():
 	settings.popup()
@@ -37,10 +39,12 @@ func _file_selected(path):
 		audio.stream = sample
 		sample_status.text = str(path.get_file())
 		file.close()
+		modulate = Color.white
 
 func _clear_pressed():
 	audio.stream = null
 	sample_status.text = "No sample assigned"
+	modulate = empty_col
 
 func _pitch_changed(value):
 	var pitch_conv = pow(2.0, value / 12.0)
