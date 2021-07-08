@@ -19,14 +19,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="value" type="Label" parent="."]
-margin_right = 64.0
-margin_bottom = 64.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="flash" type="ColorRect" parent="."]
 margin_right = 64.0
 margin_bottom = 64.0
@@ -39,7 +31,6 @@ __meta__ = {
 [node name="audio" type="AudioStreamPlayer" parent="."]
 
 [node name="settings_menu" type="WindowDialog" parent="."]
-visible = true
 margin_right = 258.0
 margin_bottom = 237.0
 window_title = "Cell settings"
@@ -56,7 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sample" type="Label" parent="settings_menu/sample_scroll"]
+[node name="sample_status" type="Label" parent="settings_menu/sample_scroll"]
 margin_right = 129.0
 margin_bottom = 14.0
 text = "No assigned sample"
@@ -69,6 +60,7 @@ margin_left = 4.0
 margin_top = 64.0
 margin_right = 253.0
 margin_bottom = 86.0
+focus_mode = 0
 text = "Load sample"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,6 +71,7 @@ margin_left = 4.0
 margin_top = 97.5
 margin_right = 253.0
 margin_bottom = 119.5
+focus_mode = 0
 text = "Clear"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,6 +82,7 @@ margin_left = 4.0
 margin_top = 131.5
 margin_right = 253.0
 margin_bottom = 153.5
+focus_mode = 0
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,8 +155,10 @@ one_shot = true
 
 [connection signal="pressed" from="settings_button" to="." method="_show_settings"]
 [connection signal="pressed" from="settings_menu/load_button" to="." method="_load_pressed"]
+[connection signal="pressed" from="settings_menu/clear_button" to="." method="_clear_pressed"]
 [connection signal="pressed" from="settings_menu/play_button" to="." method="_play_sample"]
 [connection signal="value_changed" from="settings_menu/pitch_box" to="." method="_pitch_changed"]
 [connection signal="value_changed" from="settings_menu/volume_box" to="." method="_volume_changed"]
+[connection signal="file_selected" from="settings_menu/file_dialog" to="." method="_file_selected"]
 [connection signal="timeout" from="flash_timer" to="." method="_flash_timeout"]
 [connection signal="timeout" from="audio_timer" to="." method="_audio_timeout"]

@@ -1,22 +1,19 @@
 extends Control
 
-export var hex_num = "0"
-
 onready var audio = $audio
 onready var audio_timer = $audio_timer
 var audio_time = 1.0
 
 onready var file_dialog = $settings_menu/file_dialog
+onready var sample_status = $settings_menu/sample_scroll/sample_status
 
 onready var flash = $flash
 onready var flash_timer = $flash_timer
 var flash_time = 0.1
 
-onready var value = $value
 onready var settings = $settings_menu
 
 func _ready():
-	value.text = hex_num
 	audio_timer.wait_time = audio_time
 	flash.hide()
 	flash_timer.wait_time = flash_time
@@ -26,6 +23,24 @@ func _show_settings():
 
 func _load_pressed():
 	file_dialog.popup()
+
+func _file_selected(path):
+	var file = File.new()
+	if file.file_exists(path):
+		file.open(path, file.READ)
+		var buffer = file.get_buffer(file.get_len())
+		var sample = AudioStreamSample.new()
+		sample.format = AudioStreamSample.FORMAT_16_BITS      
+		sample.data = buffer
+		sample.stereo = true
+		sample.mix_rate = 44100
+		audio.stream = sample
+		sample_status.text = str(path.get_file())
+		file.close()
+
+func _clear_pressed():
+	audio.stream = null
+	sample_status.text = "No sample assigned"
 
 func _pitch_changed(value):
 	var pitch_conv = pow(2.0, value / 12.0)
