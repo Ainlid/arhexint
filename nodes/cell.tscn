@@ -83,6 +83,7 @@ margin_top = 131.5
 margin_right = 253.0
 margin_bottom = 153.5
 focus_mode = 0
+disabled = true
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
