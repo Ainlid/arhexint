@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/data_menu.gd" type="Script" id=1]
+
+[node name="data_menu" type="Control"]
+margin_left = 36.0
+margin_top = 362.0
+margin_right = 341.0
+margin_bottom = 467.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="panel" type="Panel" parent="."]
+margin_right = 304.0
+margin_bottom = 146.0
+
+[node name="data_scroll" type="ScrollContainer" parent="."]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 294.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="data_status" type="Label" parent="data_scroll"]
+margin_right = 109.0
+margin_bottom = 14.0
+text = "No data assigned"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load_button" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 64.0
+margin_right = 295.0
+margin_bottom = 92.0
+focus_mode = 0
+text = "Load data"
+
+[node name="clear_button" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 105.0
+margin_right = 295.0
+margin_bottom = 133.0
+focus_mode = 0
+text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="file_dialog" type="FileDialog" parent="."]
+visible = true
+margin_left = 320.0
+margin_top = -306.0
+margin_right = 706.0
+margin_bottom = 146.0
+window_title = "Open a File"
+mode = 0
+access = 2
+current_dir = "/Daniil/art/arhexint"
+current_path = "/Daniil/art/arhexint/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="load_button" to="." method="_load_pressed"]
+[connection signal="pressed" from="clear_button" to="." method="_clear_pressed"]
+[connection signal="file_selected" from="file_dialog" to="." method="_file_selected"]
